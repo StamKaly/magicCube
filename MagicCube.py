@@ -10,14 +10,14 @@ class MagicCube:
             numberInt = int(rowsNumber)
         except ValueError:
             print("You can generate a Magic Cube only with a NUMBER of rows!")
-            return
+            return None
         unacceptableNumbers = ['0', '2', '4', '6', '8']
         if numberInt == 1:
             return 1
         for number in unacceptableNumbers:
             if str(rowsNumber).endswith(number):
                 print("Sorry you can generate a Magic Cube only with uneven number of rows!")
-                return
+                return None
 
 
         self.finalNumber = numberInt * numberInt
@@ -56,7 +56,9 @@ class MagicCube:
 
     def printMagicCube(self):
         if self.magicCube == None:
-            print("You have not generated any Magic Cubes yet!")
+            return
+        elif self.magicCube == 1:
+            print(u"|\u03051\u0305|\u0305\n \u0305 \u0305 \u0305")
         else:
             for magicRow in self.magicCube:
                 row = ""
@@ -77,6 +79,7 @@ class MagicCube:
             for _ in range(int(rowLength/2)):
                 finalLine += " \u0305"
             print(u"{}".format(finalLine))
+            self.magicCube = None
 
 
     def generateAndPrintMagicCube(self, rowsNumber):
