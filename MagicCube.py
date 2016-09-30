@@ -13,6 +13,7 @@ class MagicCube:
             return None
         unacceptableNumbers = ['0', '2', '4', '6', '8']
         if numberInt == 1:
+            self.magicCube = 1
             return 1
         for number in unacceptableNumbers:
             if str(rowsNumber).endswith(number):
