@@ -15,6 +15,8 @@ class MagicCube:
         if numberInt == 1:
             self.magicCube = 1
             return 1
+        elif numberInt <= 0:
+            print("You can't generate any cubes with 0 or less number of rows!")
         for number in unacceptableNumbers:
             if str(rowsNumber).endswith(number):
                 print("Sorry you can generate a Magic Cube only with uneven number of rows!")
