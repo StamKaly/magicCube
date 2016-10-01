@@ -36,10 +36,8 @@ class MagicSquare:
                 print("Sorry you can generate a Magic Square only with uneven number of rows!")
                 self.magicSquare = None
                 return None
-        self.rowsNumber = rowsNumber
 
 
-        self.finalNumber = numberInt * numberInt
         self.magicSquare = []
         for _ in range(numberInt):
             row = []
@@ -70,8 +68,8 @@ class MagicSquare:
                     currentRow += 1
                 self.magicSquare[currentRow][currentColumn] = currentNumber
             currentNumber += 1
-        return self.magicSquare
         '''
+        return self.magicSquare
 
     def printMagicSquare(self):
         if self.magicSquare == None:
