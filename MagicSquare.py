@@ -23,7 +23,7 @@ class MagicSquare:
         self.finalNumber = numberInt*numberInt
 
         # Magnetic Duck's version following this https://en.wikipedia.org/wiki/Magic_square#Method_for_constructing_a_magic_square_of_odd_order :
-        self.magicSquare = [[((2 * j + 1 + i) % numberInt) + ((6 + i + j) % numberInt) * numberInt + 1 for i in range(numberInt)] for j in range(numberInt)]
+        self.magicSquare = [[(2 * j + i) % numberInt + (j + i) % numberInt + 1 for i in range(numberInt)] for j in range(numberInt)]
 
 
         '''
