@@ -33,10 +33,10 @@ class MagicSquare:
             for _ in range(numberInt):
                 row.append(0)
             self.magicSquare.append(row)
-        self.magicSquare[0][int(numberInt/2+0.5) - 1] = 1
+        self.magicSquare[0][int(numberInt/2-0.5)] = 1
         currentNumber = 2
         currentRow = 0
-        currentColumn = int(numberInt/2+0.5) - 1
+        currentColumn = int(numberInt/2-0.5)
         for _ in range(self.finalNumber - 1):
             workingRow = currentRow
             workingColumn = currentColumn
@@ -94,4 +94,4 @@ class MagicSquare:
 
 
 if __name__ == '__main__':
-    MagicSquare().generateAndPrintMagicSquare(13)
+    MagicSquare().generateAndPrintMagicSquare(5)
