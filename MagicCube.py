@@ -10,6 +10,7 @@ class MagicCube:
             numberInt = int(rowsNumber)
         except ValueError:
             print("You can generate a Magic Cube only with a NUMBER of rows!")
+            self.magicCube = None
             return None
         unacceptableNumbers = ['0', '2', '4', '6', '8']
         if numberInt == 1:
@@ -20,6 +21,7 @@ class MagicCube:
         for number in unacceptableNumbers:
             if str(rowsNumber).endswith(number):
                 print("Sorry you can generate a Magic Cube only with uneven number of rows!")
+                self.magicCube = None
                 return None
 
 
