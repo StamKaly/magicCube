@@ -12,12 +12,25 @@ class MagicSquare:
             print("You can generate a Magic Square only with a NUMBER of rows!")
             self.magicSquare = None
             return None
-        unacceptableNumbers = ['0', '2', '4', '6', '8']
         if numberInt == 1:
             self.magicSquare = 1
             return 1
         elif numberInt <= 0:
             print("You can't generate any squares with 0 or less number of rows!")
+            self.magicSquare = None
+            return None
+        self.rowsNumber = numberInt
+        self.finalNumber = numberInt*numberInt
+
+        # Magnetic Duck's version following this https://en.wikipedia.org/wiki/Magic_square#Method_for_constructing_a_magic_square_of_odd_order :
+        self.magicSquare = [[((2 * j + 1 + i) % numberInt) + ((6 + i + j) % numberInt) * numberInt + 1 for i in range(numberInt)] for j in range(numberInt)]
+
+
+        '''
+        This is my version following the algorithm shown here http://puzzling.stackexchange.com/a/1982 :
+
+
+        unacceptableNumbers = ['0', '2', '4', '6', '8']
         for number in unacceptableNumbers:
             if str(rowsNumber).endswith(number):
                 print("Sorry you can generate a Magic Square only with uneven number of rows!")
@@ -58,7 +71,7 @@ class MagicSquare:
                 self.magicSquare[currentRow][currentColumn] = currentNumber
             currentNumber += 1
         return self.magicSquare
-
+        '''
 
     def printMagicSquare(self):
         if self.magicSquare == None:
@@ -94,4 +107,4 @@ class MagicSquare:
 
 
 if __name__ == '__main__':
-    MagicSquare().generateAndPrintMagicSquare(5)
+    MagicSquare().generateAndPrintMagicSquare(3)
