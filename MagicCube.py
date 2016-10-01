@@ -23,6 +23,7 @@ class MagicCube:
                 print("Sorry you can generate a Magic Cube only with uneven number of rows!")
                 self.magicCube = None
                 return None
+        self.rowsNumber = rowsNumber
 
 
         self.finalNumber = numberInt * numberInt
@@ -63,27 +64,26 @@ class MagicCube:
         if self.magicCube == None:
             return
         elif self.magicCube == 1:
-            print(u"|\u03051\u0305|\u0305\n \u0305 \u0305 \u0305")
+            print("|\u0305\u03321\u0305\u0332|\u0305\u0332")
         else:
             for magicRow in self.magicCube:
                 row = ""
+                if self.magicCube.index(magicRow) == self.rowsNumber - 1:
+                    extraCharacter = "\u0332"
+                else:
+                    extraCharacter = ""
                 for magicNumber in magicRow:
-                    row += "|\u0305"
+                    row += "|\u0305{}".format(extraCharacter)
                     if len(str(magicNumber)) == len(str(self.finalNumber)):
                         for number in str(magicNumber):
-                            row += "{}\u0305".format(number)
+                            row += "{}\u0305{}".format(number, extraCharacter)
                     else:
                         spaces = len(str(self.finalNumber)) - len(str(magicNumber))
                         for _ in range(spaces):
-                            row += " \u0305"
+                            row += "\u203E{}".format(extraCharacter)
                         for number in str(magicNumber):
-                            row += "{}\u0305".format(number)
-                rowLength = len("{}|\u0305".format(row))
-                print(u"{}|\u0305".format(row))
-            finalLine = ""
-            for _ in range(int(rowLength/2)):
-                finalLine += " \u0305"
-            print(u"{}".format(finalLine))
+                            row += "{}\u0305{}".format(number, extraCharacter)
+                print("{}|\u0305{}".format(row, extraCharacter))
             self.magicCube = None
 
 
