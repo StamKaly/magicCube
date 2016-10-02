@@ -1,13 +1,9 @@
-__author__ = 'Stam Kaly'
-__date__ = '30-9-2016'
-
 class MagicSquare:
     def __init__(self):
         self.magicSquare = None
 
     def mod(self, number):
         return number % self.numberInt
-
 
     def generateMagicSquare(self, rowsNumber):
         try:
@@ -30,51 +26,6 @@ class MagicSquare:
         # (c) Chris Gadzinski ;)
         self.magicSquare = [[self.mod(2 * j + i) + self.mod(j + i) * numberInt
             for i in range(numberInt)] for j in range(numberInt)]
-
-
-        '''
-        This is my version following the algorithm shown here http://puzzling.stackexchange.com/a/1982 :
-
-
-        unacceptableNumbers = ['0', '2', '4', '6', '8']
-        for number in unacceptableNumbers:
-            if str(rowsNumber).endswith(number):
-                print("Sorry you can generate a Magic Square only with uneven number of rows!")
-                self.magicSquare = None
-                return None
-
-
-        self.magicSquare = []
-        for _ in range(numberInt):
-            row = []
-            for _ in range(numberInt):
-                row.append(0)
-            self.magicSquare.append(row)
-        self.magicSquare[0][int(numberInt/2-0.5)] = 1
-        currentNumber = 2
-        currentRow = 0
-        currentColumn = int(numberInt/2-0.5)
-        for _ in range(self.finalNumber - 1):
-            workingRow = currentRow
-            workingColumn = currentColumn
-            workingRow -= 1
-            workingColumn += 1
-            if workingRow < 0:
-                workingRow = numberInt - 1
-            if workingColumn > numberInt - 1:
-                workingColumn = 0
-            if self.magicSquare[workingRow][workingColumn] == 0:
-                self.magicSquare[workingRow][workingColumn] = currentNumber
-                currentRow = workingRow
-                currentColumn = workingColumn
-            else:
-                if currentRow + 1 > numberInt - 1:
-                    currentRow = 0
-                else:
-                    currentRow += 1
-                self.magicSquare[currentRow][currentColumn] = currentNumber
-            currentNumber += 1
-        '''
         return self.magicSquare
 
     def printMagicSquare(self):
