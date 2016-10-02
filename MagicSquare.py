@@ -5,9 +5,14 @@ class MagicSquare:
     def __init__(self):
         self.magicSquare = None
 
+    def mod(self, number):
+        return number % self.numberInt
+
+
     def generateMagicSquare(self, rowsNumber):
         try:
             numberInt = int(rowsNumber)
+            self.numberInt = numberInt
         except ValueError:
             print("You can generate a Magic Square only with a NUMBER of rows!")
             self.magicSquare = None
@@ -23,7 +28,7 @@ class MagicSquare:
         self.finalNumber = numberInt*numberInt
 
         # (c) Chris Gadzinski ;)
-        self.magicSquare = [[(2 * j + i) % numberInt + (j + i) % numberInt * numberInt
+        self.magicSquare = [[self.mod(2 * j + i) + self.mod(j + i) * numberInt
             for i in range(numberInt)] for j in range(numberInt)]
 
 
@@ -106,4 +111,4 @@ class MagicSquare:
 
 
 if __name__ == '__main__':
-    MagicSquare().generateAndPrintMagicSquare(3)
+    MagicSquare().generateAndPrintMagicSquare(2)
